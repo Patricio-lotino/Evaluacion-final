@@ -1,4 +1,4 @@
-import { Pet, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { CreatePetDTO, UpdatePetDTO, PetDTO } from "../dto/PetDTO"
 
 const prisma = new PrismaClient()
@@ -11,7 +11,7 @@ export default class PetRepository {
   }
   
   public readonly findAll = async (): Promise<PetDTO[]> => {
-    const pets: Pet[] = await prisma.pet.findMany({
+    const pets = await prisma.pet.findMany({
       where: {
         userId: this.userId
       }
@@ -34,7 +34,7 @@ export default class PetRepository {
 
   public readonly create = async (pet: CreatePetDTO): Promise<PetDTO> => {
     const newPet = await prisma.pet.create({
-      data: { ...pet, userId: this.userId }
+      data: { ...pet, userId: this.userId, birth: new Date(pet.birth).toISOString() }
     })
 
     return newPet
@@ -50,7 +50,7 @@ export default class PetRepository {
     })
   }
 
-  public readonly delete = async (id: number): Promise<void> => {
+  public readonly delete = async (id: number) => {
     await prisma.pet.deleteMany({
       where: {
         id,

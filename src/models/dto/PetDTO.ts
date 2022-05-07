@@ -11,8 +11,6 @@ export interface PetDTO extends BasePetDTO {
   userId: number | null
 }
 
-export interface CreatePetDTO extends BasePetDTO {
-  
-}
+export interface CreatePetDTO extends BasePetDTO {}
 
-export type UpdatePetDTO = Partial<BasePetDTO>
+export interface UpdatePetDTO extends Partial<BasePetDTO> {}

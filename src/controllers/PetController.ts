@@ -1,9 +1,8 @@
-import type { Request, Response } from 'express'
-import type { CreatePetDTO, UpdatePetDTO } from '../models/dto/PetDTO'
-import { UserTokenPayload } from '../models/dto/UserDTO'
-import PetRepository from '../models/repositories/PetRepository'
-import { createPetSchema, updatePetSchema } from '../models/validators/petSchemas'
-
+import type { Request, Response } from "express"
+import type { CreatePetDTO, UpdatePetDTO } from "../models/dto/PetDTO"
+import { UserTokenPayload } from "../models/dto/UserDTO"
+import PetRepository from "../models/repositories/PetRepository"
+import { createPetSchema, updatePetSchema } from "../models/validators/petSchemas"
 export default class PetController {
   public readonly getAll = async (req: Request, res: Response) => {
     try {
