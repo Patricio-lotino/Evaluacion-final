@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express"
 import { verifyToken } from "../lib/jwt"
 
 export default function tokenValidator() {
-  return async function (req: Request, res: Response, next: NextFunction) {
+  return function (req: Request, res: Response, next: NextFunction) {
     const authHeader = req.headers.authorization
 
     if (!authHeader) {
@@ -10,12 +10,17 @@ export default function tokenValidator() {
       return
     }
 
-    const [, token] = authHeader.split(' ')
+    const [bearer, token] = authHeader.split(' ')
+
+    if (bearer !== 'Bearer') {
+      res.status(401).json({ message: "Missing authorization header" })
+      return
+    }
 
     try {
-      const decoded = verifyToken(token)
-      req.user = decoded
-    } catch (err) {
+      const tokenPayload = verifyToken(token)
+      req.user = tokenPayload
+    } catch {
       res.status(401).json({ message: "Missing authorization header" })
       return
     }

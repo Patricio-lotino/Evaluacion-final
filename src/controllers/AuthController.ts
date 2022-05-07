@@ -17,6 +17,7 @@ export default class AuthController {
     }
 
     const repository = new UserRepository()
+
     try {
       const user = await repository.findByEmail(credentials.email)
 
