@@ -6,8 +6,8 @@ const prisma = new PrismaClient()
 export default class UserRepository {
   public readonly findAll = async (): Promise<UserDTO[]> => {
     const users = await prisma.user.findMany()
-    const usersWithoutPassword = users.map(users => {
-      const { password, ...userWithoutPassword } = users
+    const usersWithoutPassword = users.map(user => {
+      const { password, ...userWithoutPassword } = user 
       return userWithoutPassword
     })
     return usersWithoutPassword

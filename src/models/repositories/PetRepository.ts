@@ -46,7 +46,9 @@ export default class PetRepository {
         id,
         userId: this.userId
       },
-      data: pet
+      data: { ...pet,
+      birth: pet.birth ? new Date(pet.birth).toISOString() : undefined
+      }
     })
   }
 
