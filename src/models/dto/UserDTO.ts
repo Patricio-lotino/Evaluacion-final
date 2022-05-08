@@ -16,7 +16,7 @@ export interface BaseUserDTO {
     password: string
   }
   
-  export interface UserTokenPayload {
+ export interface UserTokenPayload {
     id: number
     sub: number
     email: string
