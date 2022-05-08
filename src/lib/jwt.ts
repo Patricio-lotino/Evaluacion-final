@@ -1,7 +1,11 @@
 import jwt from 'jsonwebtoken'
 import { UserDTO, UserTokenPayload } from '../models/dto/UserDTO'
 
-const secret = process.env.JWT_SECRET || 'secret'
+const secret = process.env.JWT_SECRET as string
+
+if (!secret) {
+  throw new Error('JWT Secret not found on env variables')  
+}
 
 export function generateToken(user: UserDTO): string {
   return jwt.sign(

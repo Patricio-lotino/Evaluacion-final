@@ -17,7 +17,6 @@ export interface BaseUserDTO {
   }
   
  export interface UserTokenPayload {
-    id: number
     sub: number
     email: string
     exp: number
