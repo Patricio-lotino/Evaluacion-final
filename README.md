@@ -1,4 +1,4 @@
-# API Rest Pet Collection
+# API Evaluacion final
 
 Tiny Rest API for teaching purposes. Express, Typescript and Prisma. Try this service on this [Live Demo](https://api-rest-pets-collection.herokuapp.com/api/v1/info)
 
@@ -10,7 +10,6 @@ Configure your environment variables on `.env` file:
 DATABASE_URL="mysql://root:root@localhost/test"
 JWT_SECRET="secret"
 ```
-
 Install dependencies with:
 
 ```bash
@@ -94,14 +93,14 @@ Returns the new user if email doesnt exists.
 
 ---
 
-### GET /api/v1/pets
-Returns all user's pets. **Requires Bearer Token at Authorization Header**
+### GET /api/v1/tasks
+Returns all user's tasks. **Requires Bearer Token at Authorization Header**
 
 **Example request:**
 
 *Method*: `GET`
 
-*Endpoint: `/api/v1/pets`*
+*Endpoint: `/api/v1/tasks`*
 
 **Example succesfully response:**
 
@@ -112,23 +111,22 @@ Returns all user's pets. **Requires Bearer Token at Authorization Header**
 [
   {
     "id": 1,
-    "name": "Cheems",
-    "type": "Dog",
-    "birth": "2020-01-01T00:00:00.000Z",
-    "photo": "someUrl",
+    "title": "report 1",
+    "content": "daily oil consumption report",
+    "done": "true",
     "userId": 1
   }
 ]
 ```
 
-### GET /api/v1/pets/:id
-Return a pet by id. **Requires Bearer Token at Authorization Header**
+### GET /api/v1/tasks/:id
+Return a task by id. **Requires Bearer Token at Authorization Header**
 
 **Example request:**
 
 *Method*: `GET`
 
-*Endpoint: `/api/v1/pets/1`*
+*Endpoint: `/api/v1/tasks/1`*
 
 **Example succesfully response:**
 
@@ -138,30 +136,30 @@ Return a pet by id. **Requires Bearer Token at Authorization Header**
 ```json
 {
   "id": 1,
-  "name": "Cheems",
-  "type": "Dog",
-  "birth": "2020-01-01T00:00:00.000Z",
-  "photo": "someUrl",
-  "userId": 1
+    "title": "report 1",
+    "content": "daily oil consumption report",
+    "done": "true",
+    "userId": 1
 }
 ```
 
-### POST /api/v1/pets
-Create a new pet for logged user. **Requires Bearer Token at Authorization Header**
+### POST /api/v1/tasks
+Create a new task for logged user. **Requires Bearer Token at Authorization Header**
 
 **Example request:**
 
 *Method*: `POST`
 
-*Endpoint: `/api/v1/pets`*
+*Endpoint: `/api/v1/tasks`*
 
 *Body:*
 ```json
 {
-  "name": "Cheems",
-  "type": "Dog",
-  "birth": "2020-01-01T00:00:00.000Z",
-  "photo": "someUrl"
+  "id": 1,
+  "title": "report 1",
+  "content": "daily oil consumption report",
+  "done": "true",
+  "userId": 1
 }
 ```
 
@@ -173,42 +171,41 @@ Create a new pet for logged user. **Requires Bearer Token at Authorization Heade
 ```json
 {
   "id": 1,
-  "name": "Cheems",
-  "type": "Dog",
-  "birth": "2020-01-01T00:00:00.000Z",
-  "photo": "someUrl",
+  "title": "report 1",
+  "content": "daily oil consumption report",
+  "done": "true",
   "userId": 1
 }
 ```
 
-### PUT /api/v1/pets/:id
-Update a pet by id. **Requires Bearer Token at Authorization Header**
+### PUT /api/v1/tasks/:id
+Update a task by id. **Requires Bearer Token at Authorization Header**
 
 **Example request:**
 
 *Method*: `PUT`
 
-*Endpoint: `/api/v1/pets/1`*
+*Endpoint: `/api/v1/tasks/1`*
 
 *Body:*
 ```json
 {
-  "name": "NotCheems",
-  "type": "Cat"
+  "title": "report 2",
+  "content": "daily production report"
 }
 ```
 
 **Example successfully response:**
 *Status: `204`*
 
-### DELETE /api/v1/pets/:id
-Delete a pet by id. **Requires Bearer Token at Authorization Header**
+### DELETE /api/v1/tasks/:id
+Delete a task by id. **Requires Bearer Token at Authorization Header**
 
 **Example request:**
 
 *Method*: `DELETE`
 
-*Endpoint: `/api/v1/pets/1`*
+*Endpoint: `/api/v1/tasks/1`*
 
 **Example successfully response:**
 
