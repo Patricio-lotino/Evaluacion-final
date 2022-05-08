@@ -11,22 +11,23 @@ datasource db {
 
 model User {
   id        Int       @id @default(autoincrement())
+  firstName String    @db.VarChar(255)
+  lastname  String    @db.VarChar(255)
   email     String    @unique @db.VarChar(255)
   password  String    @db.VarChar(255)
-  pets      Pet[]
+  tasks     Task[]
 
   @@map("users")
 }
 
-model Pet {
-  id       Int        @id @default(autoincrement())
-  name     String     @db.VarChar(60)
-  type     String     @db.VarChar(60)
-  birth    DateTime   @db.Date()
-  photo    String?    @db.VarChar(255)
-  user     User?      @relation(fields: [userId], references: [id])
-  userId   Int?
+model Task {
+  id        Int        @id @default(autoincrement())
+  title     String     @unique @db.VarChar(255)
+  content   String     @db.VarChar(255)
+  done      Boolean    @default(false)
+  user      User?      @relation(fields: [userId], references: [id])
+  userId    Int?
 
-  @@unique([name, userId])
-  @@map("pets")
+  @@unique([userId])
+  @@map("tasks")
 }

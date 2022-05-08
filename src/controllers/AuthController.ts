@@ -36,29 +36,8 @@ export default class AuthController {
     }
   }
 
-    //const repository = new UserRepository()
-
-    //try {
-      //const user = await repository.findByEmail(credentials.email)
-
-      //if (!user || !bcrypt.compareSync(credentials.password, user.password)) {
-        //res.status(401).json({ error: 'Invalid credentials' })
-        //return
-      //}
-  
-      //const token = generateToken(user)
-  
-      //res.json({ token });
-    //} catch (error) {
-      //console.log(error.message)
-      //res.status(500).json({ message: 'Something went wrong' })
-    //}
-  //}
-
-  public readonly register = async (req: Request, res: Response) => {
+    public readonly register = async (req: Request, res: Response) => {
     const user = req.body as CreateUserDTO
-
-    //const repository = new UserRepository()
 
     try {
       await registerSchema.validateAsync(user)
