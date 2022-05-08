@@ -1,6 +1,6 @@
 # API Evaluacion final
 
-Tiny Rest API for teaching purposes. Express, Typescript and Prisma. Try this service on this [Live Demo](https://api-rest-pets-collection.herokuapp.com/api/v1/info)
+Tiny Rest API for teaching purposes. Express, Typescript and Prisma.
 
 ## Prerequisites:
 
